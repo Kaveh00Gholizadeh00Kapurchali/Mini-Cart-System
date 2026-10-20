@@ -1,0 +1,30 @@
+<div class="text-center mt-10">
+    <h1 class="text-3xl">Cart: {{count()}}</h1>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6 p2">
+    <div>
+        <h2 class="text-xl font-bold bg-blue-200 mb-4 rounded">Products</h2>
+        <div class="space-y-3">
+            @for (p of products; track p){
+                <div class="p-4 bg-white shadow rounded flex justify-between">
+                    <div>
+                        <p class="font-sembold">{{p.name}}</p>
+                        <p class="font-sembold">${{p.priceCent / 100}}</p>
+                    </div>
+                    <button class="text-white bg-blue-500 rounded px-3" (click)="addToCart(p)">Add</button>
+                </div>
+            }
+        </div>
+    </div>
+    <div>
+        <h2 class="text-xl font-bold bg-blue-200 mb-4 rounded">Cart</h2>
+        @for (item of cart(); track item; let i = $index) {
+            <div class="p-4 bg-white shadow rounded flex justify-between">
+                <span>{{item.name}}</span>
+                <button class="text-white bg-red-500 p-1 rounded" (click)="removeFromCart(i)">Remove</button>
+            </div>
+        }
+        <p class="mt-4 text-lg font-bold">Total: ${{ cartTotal() }}</p>
+    </div>
+</div>

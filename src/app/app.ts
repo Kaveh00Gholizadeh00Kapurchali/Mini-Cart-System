@@ -1,8 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import {MiniCart} from './mini-cart/mini-cart';
+
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MiniCart],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
